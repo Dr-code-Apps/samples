@@ -12,7 +12,7 @@ class imageAnalysis:
 		Return lists of intensity distributions on a specified horizontal line and vertical line from a grayscale image.
 
 		Prameters
-    	----------
+		----------
 		inputImageFile :  String
 			grayscale image of raster type (.jpg, .png, .tiff)
 		horizontalPosition : Int
@@ -21,13 +21,13 @@ class imageAnalysis:
 			Positional information of the horizontal line to be acquired (pixel)
 
 		Returns
-	    -------
-    	imageVerticalArray : Int List
-        	Intensity distribution on a specified horizontal line in the image.
-        	Black(min: 0) <--> White(max: 255)
-        imageHorizontalArray : Int List
-        	Intensity distribution on a specified vertical line in the image.
-        	Black(min: 0) <--> White(max: 255)
+		-------
+		imageVerticalArray : Int List
+			Intensity distribution on a specified horizontal line in the image.
+			Black(min: 0) <--> White(max: 255)
+		imageHorizontalArray : Int List
+			Intensity distribution on a specified vertical line in the image.
+			Black(min: 0) <--> White(max: 255)
 		"""
 
 		image = Image.open(inputImageFile)
@@ -54,11 +54,11 @@ class imageAnalysis:
 		imageVerticalArray = np.zeros((height), dtype = int)
 
 		for y in range(height):
-		    for x in range(width):
-		        if x == horizontalPosition:
-		            imageVerticalArray[y] = image.getpixel((x, y))
-		        if y == verticalPosition:
-		            imageHorizontalArray[x] = image.getpixel((x, y))
+			for x in range(width):
+				if x == horizontalPosition:
+					imageVerticalArray[y] = image.getpixel((x, y))
+				if y == verticalPosition:
+					imageHorizontalArray[x] = image.getpixel((x, y))
 
 		return imageVerticalArray, imageHorizontalArray
 	
@@ -68,7 +68,7 @@ class imageAnalysis:
 		Return a pdf file of the input image with the intensity distribution.
 		
 		Prameters
-    	----------
+		----------
 		imageFile :  String
 			grayscale image of raster type (.jpg, .png, .tiff)
 		horizontalPosition : Int
@@ -87,7 +87,7 @@ class imageAnalysis:
 		fig = plt.figure(figsize=(5*aspectRatio, 5))
 		gs = gridspec.GridSpec(2, 2, height_ratios=(4, 1), width_ratios=(1, 4))
 		plt.title('vertical position : {:.0f} px, horizontal position : {:.0f} px'\
-		            .format(verticalPosition, horizontalPosition), fontsize=13)
+					.format(verticalPosition, horizontalPosition), fontsize=13)
 		plt.axis('off')
 		plt.gray()
 
